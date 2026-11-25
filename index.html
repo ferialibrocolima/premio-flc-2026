@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premio de Cuento y Poesía · Feria del Libro Colima 2026</title>
+  <meta name="description" content="Obras ganadoras del Premio de Cuento y Poesía de la Feria del Libro Colima 2026: La grieta por donde nació el mundo (poesía) y Tundra en verano (cuento).">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --verde-poesia: #8BC34A;
+      --verde-poesia-dark: #689F38;
+      --verde-poesia-light: #DCEDC8;
+      --verde-poesia-bg: #F1F8E9;
+      --lila-cuento: #AB47BC;
+      --lila-cuento-dark: #8E24AA;
+      --lila-cuento-light: #E1BEE7;
+      --lila-cuento-bg: #F3E5F5;
+      --azul-cielo: #E3F2FD;
+      --texto: #1A1A1A;
+      --texto-suave: #4A4A4A;
+      --blanco: #FFFFFF;
+      --sombra: 0 10px 40px rgba(0,0,0,0.08);
+      --sombra-hover: 0 20px 50px rgba(0,0,0,0.12);
+      --radio: 16px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Source Sans 3', system-ui, sans-serif;
+      color: var(--texto);
+      background: #FAFAFA;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    /* Header / Hero */
+    .hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, #E3F2FD 0%, #BBDEFB 40%, #90CAF9 100%);
+      overflow: hidden;
+      text-align: center;
+      padding: 2rem 1.5rem;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('assets/flc26.jpg') center/cover no-repeat;
+      opacity: 0.15;
+      filter: blur(2px);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #5D4037;
+      color: white;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      color: #1A237E;
+      margin-bottom: 0.75rem;
+      text-shadow: 0 2px 10px rgba(255,255,255,0.6);
+    }
+
+    .hero .subtitle {
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      color: #283593;
+      font-weight: 400;
+      margin-bottom: 2rem;
+    }
+
+    .hero-poster {
+      max-width: 320px;
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: var(--sombra-hover);
+      margin: 0 auto 2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .hero-poster:hover {
+      transform: scale(1.03);
+    }
+
+    .scroll-hint {
+      margin-top: 2rem;
+      animation: bounce 2s infinite;
+      color: #3949AB;
+      font-size: 0.95rem;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--texto-suave);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+
+    nav a:hover, nav a.active {
+      color: #1A237E;
+      background: #E8EAF6;
+    }
+
+    /* Sections */
+    section {
+      padding: 4.5rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      margin-bottom: 0.5rem;
+      color: #1A237E;
+    }
+
+    .section-lead {
+      text-align: center;
+      color: var(--texto-suave);
+      max-width: 640px;
+      margin: 0 auto 3rem;
+      font-size: 1.1rem;
+    }
+
+    /* Books grid */
+    .books {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    @media (min-width: 780px) {
+      .books {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .book-card {
+      border-radius: var(--radio);
+      overflow: hidden;
+      box-shadow: var(--sombra);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .book-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--sombra-hover);
+    }
+
+    .book-card.poesia {
+      border-top: 6px solid var(--verde-poesia);
+    }
+
+    .book-card.cuento {
+      border-top: 6px solid var(--lila-cuento);
+    }
+
+    .book-cover {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      background: #eee;
+    }
+
+    .book-body {
+      padding: 1.75rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .genre-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+      border-radius: 6px;
+      margin-bottom: 0.85rem;
+    }
+
+    .poesia .genre-tag {
+      background: var(--verde-poesia-light);
+      color: var(--verde-poesia-dark);
+    }
+
+    .cuento .genre-tag {
+      background: var(--lila-cuento-light);
+      color: var(--lila-cuento-dark);
+    }
+
+    .book-title {
+      font-size: 1.45rem;
+      margin-bottom: 0.4rem;
+      color: #111;
+    }
+
+    .book-author {
+      font-size: 1.05rem;
+      color: var(--texto-suave);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .book-desc {
+      font-size: 0.98rem;
+      color: #555;
+      flex: 1;
+      margin-bottom: 1.25rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.7rem 1.3rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-poesia {
+      background: var(--verde-poesia);
+      color: white;
+    }
+
+    .btn-poesia:hover {
+      background: var(--verde-poesia-dark);
+    }
+
+    .btn-cuento {
+      background: var(--lila-cuento);
+      color: white;
+    }
+
+    .btn-cuento:hover {
+      background: var(--lila-cuento-dark);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid currentColor;
+    }
+
+    .btn-outline-poesia {
+      color: var(--verde-poesia-dark);
+      border-color: var(--verde-poesia);
+    }
+    .btn-outline-poesia:hover {
+      background: var(--verde-poesia-light);
+    }
+
+    .btn-outline-cuento {
+      color: var(--lila-cuento-dark);
+      border-color: var(--lila-cuento);
+    }
+    .btn-outline-cuento:hover {
+      background: var(--lila-cuento-light);
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    /* Authors */
+    .authors {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    @media (min-width: 780px) {
+      .authors {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .author-card {
+      background: white;
+      border-radius: var(--radio);
+      padding: 2rem;
+      box-shadow: var(--sombra);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .author-card.poesia::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 100%;
+      background: var(--verde-poesia);
+    }
+
+    .author-card.cuento::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 100%;
+      background: var(--lila-cuento);
+    }
+
+    .author-name {
+      font-size: 1.35rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .author-role {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 1.1rem;
+      color: var(--texto-suave);
+    }
+
+    .poesia .author-role { color: var(--verde-poesia-dark); }
+    .cuento .author-role { color: var(--lila-cuento-dark); }
+
+    .author-bio {
+      font-size: 0.97rem;
+      color: #444;
+      text-align: justify;
+    }
+
+    .author-bio p + p {
+      margin-top: 0.9rem;
+    }
+
+    /* About prize */
+    .prize-box {
+      background: linear-gradient(135deg, #E8EAF6 0%, #C5CAE9 100%);
+      border-radius: var(--radio);
+      padding: 2.5rem;
+      text-align: center;
+      box-shadow: var(--sombra);
+    }
+
+    .prize-box h3 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      color: #1A237E;
+    }
+
+    .prize-box p {
+      max-width: 700px;
+      margin: 0 auto 1.2rem;
+      color: #333;
+    }
+
+    /* Footer */
+    footer {
+      background: #1A237E;
+      color: #E8EAF6;
+      padding: 3rem 1.5rem 2rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    footer a {
+      color: #C5CAE9;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: white;
+    }
+
+    .footer-logos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+      opacity: 0.9;
+      font-size: 0.85rem;
+    }
+
+    .copyright {
+      font-size: 0.85rem;
+      opacity: 0.75;
+      margin-top: 1.5rem;
+    }
+
+    /* Modal for excerpts */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 16px;
+      max-width: 640px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 2rem;
+      position: relative;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: #f0f0f0;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    .modal-close:hover {
+      background: #e0e0e0;
+    }
+
+    .modal h3 {
+      margin-bottom: 0.5rem;
+      padding-right: 2rem;
+    }
+
+    .modal .excerpt {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #333;
+      white-space: pre-line;
+      margin-top: 1.2rem;
+    }
+
+    .modal .note {
+      font-size: 0.85rem;
+      color: #777;
+      margin-top: 1.5rem;
+      font-style: italic;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      section { padding: 3rem 1.1rem; }
+      .book-body { padding: 1.4rem; }
+      .author-card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero -->
+  <header class="hero" id="inicio">
+    <div class="hero-content">
+      <span class="badge">FLC 2026 · Premio de Cuento y Poesía</span>
+      <h1>Obras ganadoras</h1>
+      <p class="subtitle">Feria del Libro Colima 2026<br>01 al 04 de octubre · Casa de la Cultura, Villa de Álvarez</p>
+      <img src="assets/flc26.jpg" alt="Cartel oficial Feria del Libro Colima 2026" class="hero-poster" width="320">
+      <p class="scroll-hint">↓ Conoce a las autoras y sus obras</p>
+    </div>
+  </header>
+
+  <!-- Nav -->
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#obras">Las obras</a>
+    <a href="#autoras">Las autoras</a>
+    <a href="#premio">El premio</a>
+  </nav>
+
+  <!-- Books -->
+  <section id="obras">
+    <h2 class="section-title">Las obras ganadoras</h2>
+    <p class="section-lead">Dos voces contemporáneas de Colima que exploran el origen, la memoria, el territorio y las tensiones de lo cotidiano.</p>
+
+    <div class="books">
+      <!-- Poesía -->
+      <article class="book-card poesia">
+        <img src="assets/cover-poesia.png" alt="Portada de La grieta por donde nació el mundo" class="book-cover">
+        <div class="book-body">
+          <span class="genre-tag">Poesía · Primer lugar</span>
+          <h3 class="book-title">La grieta por donde nació el mundo</h3>
+          <p class="book-author">Ana Luisa Flores Madrigal</p>
+          <p class="book-desc">
+            Un poemario que indaga en el origen primordial: el momento en que lo unido se separa, la montaña escucha su propio rumor y nace la herida por donde aparece el mundo. Una poética de la tierra, el fuego, el agua y la memoria del territorio.
+          </p>
+          <div class="btn-group">
+            <button class="btn btn-poesia" onclick="openModal('poesia1')">Fragmento 1</button>
+            <button class="btn btn-outline btn-outline-poesia" onclick="openModal('poesia2')">Fragmento 2</button>
+            <a class="btn btn-poesia" href="assets/la-grieta.pdf" download="La_grieta_por_donde_nacio_el_mundo.pdf">Descargar PDF</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Cuento -->
+      <article class="book-card cuento">
+        <img src="assets/cover-cuento.png" alt="Portada de Tundra en verano" class="book-cover">
+        <div class="book-body">
+          <span class="genre-tag">Cuento · Primer lugar</span>
+          <h3 class="book-title">Tundra en verano</h3>
+          <p class="book-author">Angelina del Refugio Llerenas Hurtado</p>
+          <p class="book-desc">
+            Narrativa de crítica social que visibiliza las violencias estructurales, los silencios colectivos y la complejidad de las relaciones humanas. Historias que cargan el peso de lo cotidiano y el fuego que arde debajo de la superficie.
+          </p>
+          <div class="btn-group">
+            <button class="btn btn-cuento" onclick="openModal('cuento1')">Fragmento 1</button>
+            <button class="btn btn-outline btn-outline-cuento" onclick="openModal('cuento2')">Fragmento 2</button>
+            <a class="btn btn-cuento" href="assets/tundra-en-verano.pdf" download="Tundra_en_verano.pdf">Descargar PDF</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Authors -->
+  <section id="autoras" style="background: #F8F9FA; max-width: none; padding-left: 0; padding-right: 0;">
+    <div style="max-width: 1100px; margin: 0 auto; padding: 0 1.5rem;">
+      <h2 class="section-title">Las autoras</h2>
+      <p class="section-lead">Dos trayectorias que combinan creación literaria, compromiso social y vínculo con el territorio colimense.</p>
+
+      <div class="authors">
+        <!-- Ana Luisa -->
+        <article class="author-card poesia">
+          <h3 class="author-name">Ana Luisa Flores Madrigal</h3>
+          <p class="author-role">Ganadora · Categoría Poesía</p>
+          <div class="author-bio">
+            <p>Nació en Colima en 1991. Inició su formación artística en el CEDART Juan Rulfo, donde egresó como técnica en artes plásticas (2010), y continuó sus estudios en Artes Visuales con especialidad en Escultura en la Universidad de Colima (2011–2015). Actualmente cursa la Licenciatura en Arte y Gestión Cultural en la Universidad Intercultural de Colima.</p>
+            <p>Su trayectoria incluye la participación en proyectos culturales como <em>Sal, tierra y libertad</em> (2010) y <em>Letras y trazos en la pared</em> (2011), además de exhibir su obra en diversos espacios de Colima y Jalisco. Ha colaborado con el INAH (2014) y se desempeñó como tallerista en el programa Fábricas de Innovación Creativa (2019).</p>
+            <p>Recientemente participó en el primer cartonero del Taller Ruta Comala con dos portadas para <em>Colibrísimos poemas</em> (2024) y en el segundo cartonero del mismo taller, <em>Casa de pócimas ignífugas</em> (2025). En 2026 obtuvo el primer lugar en la categoría de poesía de los Juegos Florales Nacionales, celebrados en el marco de las Fiestas Charrotaurinas de Villa de Álvarez, con el poemario <em>Relatos en versos del perro de barro</em>.</p>
+            <p>Su trabajo articula la creación literaria y visual con el interés por el territorio, la memoria y las tradiciones culturales del occidente de México.</p>
+          </div>
+        </article>
+
+        <!-- Angelina -->
+        <article class="author-card cuento">
+          <h3 class="author-name">Angelina del Refugio Llerenas Hurtado</h3>
+          <p class="author-role">Ganadora · Categoría Cuento</p>
+          <div class="author-bio">
+            <p>Licenciada en Gestión y Reducción del Riesgo de Desastres por la Universidad de Colima. Ha desarrollado su trayectoria en la intersección entre la acción climática, la participación comunitaria y la sensibilización social.</p>
+            <p>En el ámbito literario, su escritura se orienta hacia una crítica social incisiva, abordando temáticas como las violencias estructurales, los silencios colectivos y la complejidad de las relaciones humanas. Ha participado en procesos de incidencia y ha sido distinguida por su labor en proyectos de impacto comunitario.</p>
+            <p>Su narrativa busca visibilizar aquello que la cotidianidad silencia, sin perder el rigor de una mirada crítica y reflexiva.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prize -->
+  <section id="premio">
+    <div class="prize-box">
+      <h3>Sobre el Premio</h3>
+      <p>El Premio de Cuento y Poesía de la Feria del Libro Colima 2026 reconoce la excelencia literaria de nuevas y consolidadas voces del estado y del país. Las obras ganadoras se publican con el apoyo de la Secretaría de Cultura del Gobierno de México a través del Apoyo a Instituciones Estatales de Cultura (AIEC) 2026 y de la Secretaría de Educación y Cultura del Gobierno del Estado de Colima.</p>
+      <p>Primera edición: octubre de 2026 · Derechos reservados © 2026</p>
+      <p style="font-size: 0.9rem; opacity: 0.85;">Edición realizada con el apoyo del Proyecto AIEC 2026 CM 03 Feria del Libro Colima 2026.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">Feria del Libro Colima 2026</p>
+    <p>01 al 04 de octubre · Casa de la Cultura, Villa de Álvarez</p>
+    <div class="footer-logos">
+      <span>Secretaría de Cultura</span>
+      <span>·</span>
+      <span>Gobierno del Estado de Colima</span>
+      <span>·</span>
+      <span>Subsecretaría de Cultura</span>
+    </div>
+    <p class="copyright">
+      Este micrositio presenta las obras ganadoras del Premio de Cuento y Poesía FLC 2026.<br>
+      Los textos completos están protegidos por derechos de autor. Fragmentos mostrados con fines de difusión cultural.
+    </p>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()" aria-label="Cerrar">&times;</button>
+      <h3 id="modal-title"></h3>
+      <p id="modal-author" style="color:#666; font-weight:600;"></p>
+      <div class="excerpt" id="modal-excerpt"></div>
+      <p class="note" id="modal-note"></p>
+    </div>
+  </div>
+
+  <script>
+    const excerpts = {
+      poesia1: {
+        title: "Origen · Génesis antes del corte",
+        author: "Ana Luisa Flores Madrigal — La grieta por donde nació el mundo",
+        text: `El interior no encontraba dónde cerrarse.
+Nada estaba separado.
+El mar dormía dentro de la montaña.
+La piedra y el agua
+ocupaban el mismo sitio en la noche.
+Todavía no existía la distancia.
+La ceniza reposaba
+en el corazón de la lluvia.
+Las raíces ascendían y descendían
+por un mismo cuerpo.
+La oscuridad entraba en sí misma
+como apalcuate
+mordiendo su cola.
+Ningún nombre había abierto
+su herida entre las cosas.
+Entonces
+allí donde el fuego sueña bajo la piedra,
+algo comenzó a desviarse.
+Apenas una vacilación
+en la profundidad del mundo.
+La montaña escuchó por primera vez
+un rumor que venía de sí misma.
+
+El mar retrocedió en su sueño.
+La ceniza abrió los ojos.
+Y aquello que permanecía unido
+comenzó a tensarse.
+Nadie podría decir
+en qué momento apareció la herida.
+Entonces el fuego ascendió
+por las venas enterradas de la montaña
+hasta tocar el centro de la noche.
+Y la noche cedió. Por aquella abertura
+salió la muerte
+con los pies manchados de barro rojo.
+Desde entonces
+el fuego busca bajo la tierra
+aquello que perdió al ascender.
+El agua busca un cuerpo
+que ya no existe. Y la tierra,
+cubierta de ceniza,
+sigue cerrando lentamente
+la antigua herida
+por donde nació el mundo.`,
+        note: "Fragmento del poemario ganador. © 2026 Ana Luisa Flores Madrigal / Secretaría de Cultura."
+      },
+      poesia2: {
+        title: "— Combustión",
+        author: "Ana Luisa Flores Madrigal — La grieta por donde nació el mundo",
+        text: `No soy origen.
+Soy el residuo
+cuando el fuego
+termina de comerse al mundo.
+El paraíso
+fue una historia posterior.
+Algo abrió la boca
+en la oscuridad.
+No fue palabra:
+fue combustión.
+
+Un coyote de fuego abrió la boca.
+No salió llama:
+cayó algo
+aún sin terminar,
+blando, sin forma:
+yo.`,
+        note: "Fragmento del poemario ganador. © 2026 Ana Luisa Flores Madrigal / Secretaría de Cultura."
+      },
+      cuento1: {
+        title: "Combustión espontánea (inicio)",
+        author: "Angelina del Refugio Llerenas Hurtado — Tundra en verano",
+        text: `—Nomás te pedí un favor.
+—Ese es el problema.
+—¿Cuál?
+—Que todos nomás me hablan para pedirme favores. De pronto todos parecen tener una emergencia cuando ocupan algo.
+—No exageres.
+—¿Sabes cuándo fue la última vez que me hablaron para invitarme a comer?
+—Pinche gente conchuda.
+—Tú también me hablas solo cuando ocupas algo.
+
+Fátima no contestó. Se quedó viendo la pantalla del celular como si ahí pudiera disipar los reclamos de Martina, aunque en realidad solo estaba tanteando si todavía le alcanzaba la vergüenza para pedirle otra cosa. Escribió un mensaje, lo borró al instante, volvió a escribirlo y volvió a borrarlo, con esa torpeza de quien sabe que ya se pasó de la raya pero todavía necesita que alguien más resuelva por ella.
+
+Martina ya conocía ese gesto.
+
+—No es para tanto —dijo Fátima al fin.
+—No parece, si así fuera ustedes mismos hallarían la manera de hacerse cargo, cabrones atenidos.
+—Nomás te pedí que llevaras a mamá a la clínica.
+—Sí.
+—Y que pasaras por los medicamentos.
+—Ajá.
+—Y que me cuidaras a los niños en la tarde.
+—Claro.
+—Y que...
+—Que bueno que no era para tanto.`,
+        note: "Fragmento del libro de cuentos ganador. © 2026 Angelina del Refugio Llerenas Hurtado / Secretaría de Cultura."
+      },
+      cuento2: {
+        title: "Combustión espontánea (continuación)",
+        author: "Angelina del Refugio Llerenas Hurtado — Tundra en verano",
+        text: `Había tanto vapor en la cocina que tuvieron que salir a la calle. No salieron corriendo ni gritando, porque en La Resolana hasta el espanto tenía normas sociales de buena educación; salieron como quien deja una olla al fuego y vuelve enseguida, con las manos rojas, los frijoles guardados y una cara de no saber todavía si lo que acababa de pasar merecía miedo, risa o una cubeta de agua fría.
+
+Una vez afuera, una vecina gritó.
+No fue un grito de pleito ni de espanto grande. Fue más bien un grito doméstico, de esos que se atribuyen cuando una se corta con el cuchillo o se machuca un dedo con la esquina de la cama.
+
+Luego se oyó otro.
+Y enseguida otros más, a varias cuadras de distancia.
+
+Después una voz atravesó la calle:
+—¡Comadre Honoria, venga a ver esto!
+
+Martina y Fátima se miraron.
+—Seguro ese cabrón volvió a golpear a Vanne —dijo Martina.
+Pero nadie se movió.
+
+Durante unos segundos, las tres se quedaron quietas en la banqueta, con las manos ardiendo y la cocina llena de vapor detrás de ellas, escuchando cómo el calor de La Resolana empezaba a surtir efecto en otras vidas, otras casas.
+
+Vanne estaba parada en medio del patio, quieta, con las manos extendidas, sin llorar ni gritar. Enmudecida.
+Sobre el lavadero, una montaña de ropa mojada soltaba vapor.
+
+—Yo no hice nada —dijo Vanne apenas vio llegar a Honoria—. Nomás estaba tallando los uniformes.
+
+Metió una mano en la pila.
+El agua empezó a burbujear.
+No hervía como una olla en la lumbre. Hervía bajo, terco, entre la espuma sucia y los puños de las camisas escolares.
+
+Martina miró las manos de Vanne, las de Fátima, las de la señora de la tienda, las de Honoria, las suyas.
+Luego miró a los hombres.
+Ninguno se estaba quemando.
+
+—¿Y ellos? —preguntó.
+Fátima siguió la dirección de sus ojos.
+—Ellos no.`,
+        note: "Fragmento del libro de cuentos ganador. © 2026 Angelina del Refugio Llerenas Hurtado / Secretaría de Cultura."
+      }
+    };
+
+    function openModal(key) {
+      const data = excerpts[key];
+      document.getElementById('modal-title').textContent = data.title;
+      document.getElementById('modal-author').textContent = data.author;
+      document.getElementById('modal-excerpt').textContent = data.text;
+      document.getElementById('modal-note').textContent = data.note;
+      document.getElementById('modal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Close on backdrop click
+    document.getElementById('modal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // Smooth scroll for nav
+    document.querySelectorAll('nav a').forEach(a => {
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
